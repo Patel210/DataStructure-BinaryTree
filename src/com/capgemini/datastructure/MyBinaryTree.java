@@ -37,6 +37,48 @@ public class MyBinaryTree<K extends Comparable<K>> {
 	}
 
 	/**
+	 * @param key
+	 * @return returns true if element is present in the tree or else false
+	 */
+	public boolean search(K key) {
+		return searchMyTree(root, key);
+	}
+
+	/**
+	 * @param pointer
+	 * @param key
+	 * @return Recursively iterating through the tree to search the key, if present
+	 *         returns true or else false
+	 */
+	private boolean searchMyTree(MyBinaryNode<K> pointer, K key) {
+		boolean result = false;
+		if (pointer != null) {
+			int compareResult = pointer.key.compareTo(key);
+			if (compareResult == 1) {
+				if (pointer.left != null) {
+					if (pointer.left.getKey() == key) {
+						result = true;
+					} else {
+						result = searchMyTree(pointer.left, key);
+					}
+				}
+			}
+			if (compareResult == -1) {
+				if (pointer.right != null) {
+					if (pointer.right.key == key) {
+						result = true;
+					} else {
+						result = searchMyTree(pointer.right, key);
+					}
+				}
+			}
+			if (compareResult == 0)
+				result = true;
+		}
+		return result;
+	}
+
+	/**
 	 * @return Returns the size of the tree
 	 */
 	public int size() {
