@@ -16,7 +16,8 @@ public class MyBinaryTree<K extends Comparable<K>> {
 
 	/**
 	 * @param pointer
-	 * @param key   Recursively trying to get the appropriate location to add the key
+	 * @param key     Recursively trying to get the appropriate location to add the
+	 *                key
 	 */
 	private void addKeyAtAppropriateNode(MyBinaryNode<K> pointer, K key) {
 		if (pointer.key.compareTo(key) == 1) {
@@ -33,5 +34,20 @@ public class MyBinaryTree<K extends Comparable<K>> {
 				addKeyAtAppropriateNode(pointer.right, key);
 			}
 		}
+	}
+
+	/**
+	 * @return Returns the size of the tree
+	 */
+	public int size() {
+		return myTreeSize(root);
+	}
+
+	/**
+	 * @param pointer
+	 * @return recursively counting the tree size
+	 */
+	private int myTreeSize(MyBinaryNode<K> pointer) {
+		return (pointer == null) ? 0 : 1 + myTreeSize(pointer.left) + myTreeSize(pointer.right);
 	}
 }
