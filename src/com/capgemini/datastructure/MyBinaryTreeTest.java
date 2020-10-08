@@ -56,7 +56,7 @@ class MyBinaryTreeTest {
 		myTree.add(67);
 		myTree.add(63);
 		myTree.add(3);
-		boolean result = myTree.search(3);
+		boolean result = myTree.search(63);
 		assertTrue(result);
 	}
 
